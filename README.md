@@ -1,4 +1,4 @@
-# AI Chatbox Integration for Resume Website
+# AI Chatbox Integration for Resumé Website
 
 ## Overview
 
