@@ -1,15 +1,18 @@
 import json
 import requests
+import sys
+sys.path.append("../../")
+from hidden import *
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-headers = {"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjA5ZTFhOTMtMjZhYi00NTY3LTliODItZDk2NTk4YmNhODIyIiwidHlwZSI6ImFwaV90b2tlbiJ9.IP0_jpdfxZPAhu6R7bT64EPEXNWz2uml2YX6nzSY61I"}
+headers = {"Authorization": B09_API_KEY}
 provider = "openai"
 url = "https://api.edenai.run/v2/text/chat"
 
 app = FastAPI()
 
-from fastapi.middleware.cors import CORSMiddleware
 origins = ["http://localhost", "http://localhost:8001"]
 app.add_middleware(
     CORSMiddleware,
@@ -28,7 +31,7 @@ async def bot_request(prompt):
     payload = {
         "providers": provider,
         "text": "",
-        "chatbot_global_action": "You are an helpful yet friendly assistant who don't hesitate to tell when you don't know",
+        "chatbot_global_action": "You are an helpful, friendly yet respectful assistant and don't hesitate to tell when you don't know",
         "previous_history": [],
         "temperature": 0.0,
         "max_tokens": 150,
