@@ -1,0 +1,145 @@
+
+:root {
+    --primary-color: #C5D2EC;
+    --background-color: #0a192f;
+    --font: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: var(--font);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+}
+
+header {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    /* width: 80%; */
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100vh;
+    flex-direction: row-reverse;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.section{
+    flex: 1 1 200px;
+    margin: 15px;
+    padding: 20px;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    border-color: #53CFD1;
+    background-color: #020c1b;
+}
+
+.section h2 {
+    color: var(--primary-color);
+}
+
+.section p {
+    line-height: 1.6;
+}
+
+#colored-title {
+    color: #53CFD1;
+}
+
+#chatbox {
+    color:#020C1B;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 200px;
+    height: 50px;
+    max-height: 760px;
+    border: none;
+    border-radius: 10px;
+    background-color: #f3f3f3;
+    box-shadow: rgba(0,0,0,0.5);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: height 0.5s;
+}
+
+#chatbox:hover {
+    height: 760px;
+    width: 400px;
+}
+
+#chat-label {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background-color: #53CFD0;
+    color: #020C1B;
+}
+
+#chatbox:not(:hover) #chat-label { 
+    display: block;
+    padding: 15px;
+
+}
+
+#chat-answer {
+    height: 80%;
+    overflow: auto;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 10px;
+    color:#0a192f
+}
+
+#chat-log {
+    height: 80%;
+    overflow: auto;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+#chat-form {
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #e5e2e2;
+}
+
+#chat-input {
+    width: 80%;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#chat-send {
+    width: 15%;
+    height: 30px; /* Set a specific height */
+    line-height: 30px; /* Align the text vertically */
+    border: none;
+    border-radius: 5px;
+    padding: 0 5px; /* Adjust the padding */
+    margin-left: 5px; /* Adjust the margin */
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    text-align: center; /* Center the text horizontally */
+}
+
+#chat-send:hover {
+    background-color: #45a049;
+}

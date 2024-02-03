@@ -1,6 +1,5 @@
 import json
 import requests
-# import my_bot
 from fastapi import FastAPI
 import uvicorn
 
@@ -10,9 +9,19 @@ url = "https://api.edenai.run/v2/text/chat"
 
 app = FastAPI()
 
-@app.get("/test/{name}")
-async def read_item(name):
-    return {"Hello": name}
+from fastapi.middleware.cors import CORSMiddleware
+origins = ["http://localhost", "http://localhost:8001"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # You can restrict this to specific HTTP methods if needed
+    allow_headers=["*"],  # You can restrict this to specific headers if needed
+)
+
+@app.get("/test/{prompt}")
+async def read_item(prompt):
+    return {"It works"}
 
 @app.post("/{prompt}")
 async def bot_request(prompt):
