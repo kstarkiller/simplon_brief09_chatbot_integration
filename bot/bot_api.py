@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-headers = {"Authorization": B09_API_KEY}
+headers = {"Authorization": "Bearer " + B09_API_KEY}
 provider = "openai"
 url = "https://api.edenai.run/v2/text/chat"
 
