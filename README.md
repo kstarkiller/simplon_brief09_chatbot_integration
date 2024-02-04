@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project seamlessly incorporates an AI-based chatbox into your resumé website, providing an immersive and interactive user experience. The AI model is provided by Open AI (GPT3.5) and powered by the cutting-edge Eden AI services, crafted in Python, and integrated into the website.
+This project seamlessly incorporates an AI-based chatbox into your resumé website, providing an interactive user experience. The AI model is provided by Open AI (GPT3.5) and powered by the cutting-edge Eden AI services, crafted in Python, and integrated into the website.
 
 Other AI models providers are also available, at your convenience, such as Meta, Gemini, Anthropic, Mistral, etc.
 
