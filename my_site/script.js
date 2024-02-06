@@ -19,5 +19,6 @@ function addNewQuestion() {
             logsEl.innerText = "You : \"" + promptEl.value + "\"\n\nMy answer: " + data;
     });
 
-    promptEl.innerText = "Anything else ?";
+    promptEl.innerText = "";
+    promptEl.ariaPlaceholder = "Anything else ?";
 };

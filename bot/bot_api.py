@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 headers = {"Authorization": "Bearer " + B09_API_KEY}
-provider = "openai"
+provider = "meta"
 url = "https://api.edenai.run/v2/text/chat"
 
 app = FastAPI()
@@ -25,6 +25,7 @@ app.add_middleware(
 @app.get("/test/{prompt}")
 async def read_item(prompt):
     return {"It works"}
+
 
 @app.post("/{prompt}")
 async def bot_request(prompt):
