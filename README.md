@@ -43,16 +43,17 @@ Before executing the code, ensure you have met the following prerequisites:
     - Open the `bot_api.py` file.
     - Replace the placeholder for the API key with your authentic Eden AI API key.
 
-6. Launch the application:
-
+6. Launch the Python server to run the `index.html` file:
     ```bash
-    python bot_api.py
-    ```
-
-7. Launch the Python server to run the `index.html` file:
-
-    ```bash
+    cd my_site/
     python -m http.server 8001
+    ```
+    
+7. Launch the application:
+
+    ```bash
+    cd my_bot/
+    python bot_api.py
     ```
 
 8. Access the website:
@@ -62,7 +63,7 @@ Before executing the code, ensure you have met the following prerequisites:
 ## Usage
 
 The AI-powered chatbox elevates the user engagement on your resumé website. Visitors can interact with the chatbox, posing queries or seeking specific information, thereby fostering a personalized and dynamic user experience.
-This chatbox is configure to be generalist and answer in a friendly yet respectful way.
+This chatbox is configure to be you, the owner of the resumé website.
 
 ## Support and Issues
 
