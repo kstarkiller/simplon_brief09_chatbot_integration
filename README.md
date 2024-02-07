@@ -1,8 +1,8 @@
-# AI Chatbox Integration for resumé Website
+# AI Chatbot Integration for resumé Website
 
 ## Overview
 
-This project seamlessly incorporates an AI-based chatbox into your resumé website, providing an interactive user experience. The AI model is provided by Open AI (GPT3.5) and powered by the cutting-edge Eden AI services, crafted in Python, and integrated into the website.
+This project seamlessly incorporates an AI-based chatbot into your resumé website, providing an interactive user experience. The AI model is provided by Open AI (GPT3.5) and powered by the cutting-edge Eden AI services, crafted in Python, and integrated into the website.
 
 Other AI models providers are also available, at your convenience, such as Meta, Gemini, Anthropic, Mistral, etc.
 
@@ -58,12 +58,12 @@ Before executing the code, ensure you have met the following prerequisites:
 
 8. Access the website:
 
-    Open your preferred web browser and navigate to [http://localhost:8001](http://localhost:8001) to experience the resumé website enriched with the seamlessly integrated AI chatbox.
+    Open your preferred web browser and navigate to [http://localhost:8001](http://localhost:8001) to experience the resumé website enriched with the seamlessly integrated AI chatbot.
 
 ## Usage
 
-The AI-powered chatbox elevates the user engagement on your resumé website. Visitors can interact with the chatbox, posing queries or seeking specific information, thereby fostering a personalized and dynamic user experience.
-This chatbox is configure to be you, the owner of the resumé website.
+The AI-powered chatbot elevates the user engagement on your resumé website. Visitors can interact with the chatbot, posing queries or seeking specific information, thereby fostering a personalized and dynamic user experience.
+This chatbot is configure to be you, the owner of the resumé website.
 
 ## Support and Issues
 
