@@ -26,14 +26,15 @@ main {
     align-items: flex-start;
     justify-content: center;
     min-height: 100vh;
-    flex-direction: row-reverse;
+    flex-direction: column;
 }
 
 .container {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    padding: 20px;
+    flex-direction: row;
+    padding: 0 20px;
 }
 
 #aboutme_container {
