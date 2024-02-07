@@ -1,18 +1,26 @@
-import json
-import requests
 import sys
 sys.path.append("../../")
+import json
+import requests
+from bs4 import BeautifulSoup
 from hidden import *
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
+# Set the API key and the headers
 headers = {"Authorization": "Bearer " + B09_API_KEY}
 provider = "meta"
 url = "https://api.edenai.run/v2/text/chat"
 
+# Scraping all the text of my website and remove the leading and trailing whitespaces with strip()
+response = requests.get("http://localhost:8001")
+soup = BeautifulSoup(response.content, "html.parser")
+site_content = soup.get_text().strip()
+
 app = FastAPI()
 
+# Allow CORS
 origins = ["http://localhost", "http://localhost:8001"]
 app.add_middleware(
     CORSMiddleware,
@@ -29,10 +37,12 @@ async def read_item(prompt):
 
 @app.post("/{prompt}")
 async def bot_request(prompt):
+    site_content = soup.get_text().strip()
+
     payload = {
         "providers": provider,
         "text": "",
-        "chatbot_global_action": "You are an helpful, friendly yet respectful assistant and don't hesitate to tell when you don't know",
+        "chatbot_global_action": f"Act as Kevin, the owner of the website of which here is the content : {site_content}",
         "previous_history": [],
         "temperature": 0.0,
         "max_tokens": 150,

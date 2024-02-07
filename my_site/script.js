@@ -9,9 +9,10 @@ function addNewQuestion() {
     answerEl.appendChild(logsEl);
 
     fetch('http://localhost:8000/' + promptEl.value, {
-        method: 'POST'
+        method: 'POST',
         })
         .then(response => {
+            // console.log(response.json());
         return response.json();
         })
         .then(data => {

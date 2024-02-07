@@ -36,6 +36,10 @@ main {
     padding: 20px;
 }
 
+#aboutme_container {
+    width: 100%;
+}
+
 .section{
     flex: 1 1 200px;
     margin: 15px;

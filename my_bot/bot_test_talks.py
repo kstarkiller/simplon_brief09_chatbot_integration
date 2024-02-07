@@ -1,13 +1,21 @@
 import json
 import requests
+from bs4 import BeautifulSoup
 import sys
 sys.path.append("../../")
 from hidden import *
 
+# Set the API key and the headers
 headers = {"Authorization": "Bearer " + B09_API_KEY}
 provider = "openai"
 url = "https://api.edenai.run/v2/text/chat"
 
+# Find all the text of my website and remove the leading and trailing whitespaces with strip()
+response = requests.get("http://localhost:8001")
+soup = BeautifulSoup(response.content, "html.parser")
+text = soup.get_text().strip()
+
+# Define a function to get the bot response
 def get_bot_response(provider, url, headers):
     prompt = input("Ask my anything : ")
     while prompt not in ["quit", "exit", "end"]:
