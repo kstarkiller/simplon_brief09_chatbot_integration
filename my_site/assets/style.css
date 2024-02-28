@@ -1,4 +1,3 @@
-
 :root {
     --primary-color: #C5D2EC;
     --background-color: #0a192f;
@@ -22,7 +21,6 @@ header {
 
 main {
     display: flex;
-    /* width: 80%; */
     align-items: flex-start;
     justify-content: center;
     min-height: 100vh;
@@ -37,18 +35,37 @@ main {
     padding: 0 20px;
 }
 
-#aboutme_container {
-    width: 100%;
+.profile-section {
+    display: flex;
+    align-items: start; /* Alignement vertical des éléments au début */
+    gap: 20px; /* Espace entre les éléments */
+}
+
+.profile-section img {
+    flex: 1; /* L'image prendra 1/3 de l'espace disponible */
+    max-width: 100%; /* Pour s'assurer que l'image ne dépasse pas son conteneur */
+    height: auto; /* Pour maintenir le ratio d'aspect de l'image */
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    border-color: #53CFD1;
+}
+
+.profile-section div {
+    flex: 3; /* Le texte prendra 2/3 de l'espace disponible */
 }
 
 .section{
-    flex: 1 1 200px;
+    flex: 1;
     margin: 15px;
     padding: 20px;
     border: 1px solid var(--primary-color);
     border-radius: 10px;
     border-color: #53CFD1;
     background-color: #020c1b;
+}
+
+.profilepic, .aboutmetxt {
+    width: 50%;
 }
 
 .section h2 {
@@ -96,10 +113,12 @@ main {
 #chatbox:not(:hover) #chat-label { 
     display: block;
     padding: 15px;
-
 }
 
 #chat-answer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     height: 80%;
     overflow: auto;
     padding: 10px;
@@ -108,12 +127,30 @@ main {
     color:#0a192f
 }
 
-#chat-log {
-    height: 80%;
-    overflow: auto;
+.chat-log-bot {
+    align-self: flex-end;
+}
+
+.chat-log-user {
+    display: inline-block;
     padding: 10px;
-    border-bottom: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 5px;
+    margin: 5px;
+    background-color:cornsilk;
+    color: black;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.chat-log-bot {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+    background-color:darkseagreen;
+    color: black;
+    max-width: 80%;
+    word-wrap: break-word;
 }
 
 #chat-form {
@@ -133,16 +170,16 @@ main {
 
 #chat-send {
     width: 15%;
-    height: 30px; /* Set a specific height */
-    line-height: 30px; /* Align the text vertically */
+    height: 30px;
+    line-height: 30px;
     border: none;
     border-radius: 5px;
-    padding: 0 5px; /* Adjust the padding */
-    margin-left: 5px; /* Adjust the margin */
+    padding: 0 5px;
+    margin-left: 5px;
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
-    text-align: center; /* Center the text horizontally */
+    text-align: center;
 }
 
 #chat-send:hover {

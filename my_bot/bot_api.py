@@ -1,15 +1,17 @@
 import sys
-sys.path.append("../../")
-import json
-import requests
-from bs4 import BeautifulSoup
-from hidden import *
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+import json
+import requests
+from bs4 import BeautifulSoup
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
+from hidden import B09_API_KEY
 
 # Set the API key and the headers
-headers = {"Authorization": "Bearer " + B09_API_KEY}
+headers = {"Authorization": "Bearer " + B09_API_KEY} # Replace B09_API_KEY with your own API key
 provider = "meta"
 url = "https://api.edenai.run/v2/text/chat"
 
