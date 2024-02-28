@@ -41,7 +41,7 @@ Before executing the code, ensure you have met the following prerequisites:
 5. Configure the application:
 
     - Open the `bot_api.py` file.
-    - Replace the placeholder for the API key with your authentic Eden AI API key.
+    - Replace the placeholder for the API key with your authentic Eden AI API key (replace B09_KEY_API by your own key at line 14)
 
 6. Launch the Python server to run the `index.html` file:
     ```bash
