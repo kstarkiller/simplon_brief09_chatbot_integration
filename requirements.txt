@@ -2,3 +2,5 @@ python==3.11.5
 requests==2.26.0
 fastapi==0.68.1
 uvicorn==0.15.0
+beautifulsoup4==4.10.0
+json==2.0.9
