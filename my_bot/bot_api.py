@@ -1,5 +1,5 @@
-import sys
-import os
+# import sys
+# import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
@@ -7,22 +7,22 @@ import json
 import requests
 from bs4 import BeautifulSoup
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
-from hidden import B09_API_KEY
+# sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
+# from hidden import B09_API_KEY
 
 # Set the API key and the headers
-headers = {"Authorization": "Bearer " + B09_API_KEY} # Replace B09_API_KEY with your own API key
+headers = {"Authorization": "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjA5ZTFhOTMtMjZhYi00NTY3LTliODItZDk2NTk4YmNhODIyIiwidHlwZSI6ImFwaV90b2tlbiJ9.IP0_jpdfxZPAhu6R7bT64EPEXNWz2uml2YX6nzSY61I"} # Replace B09_API_KEY with your own API key
 provider = "meta"
 url = "https://api.edenai.run/v2/text/chat"
 
 # Scraping all the text of my website and remove the leading and trailing whitespaces with strip()
-response = requests.get("http://localhost:8001")
-soup = BeautifulSoup(response.content, "html.parser")
+# response = requests.get("http://localhost:8001")
+# soup = BeautifulSoup(response.content, "html.parser")
 
 app = FastAPI()
 
 # Allow CORS
-origins = ["http://localhost", "http://localhost:8001"]
+origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -38,12 +38,13 @@ async def read_item(prompt):
 
 @app.post("/{prompt}")
 async def bot_request(prompt):
-    site_content = soup.get_text().strip()
+    # site_content = soup.get_text().strip()
 
     payload = {
         "providers": provider,
         "text": "",
-        "chatbot_global_action": f"You are Kevin, the owner of the website of which here is the content : {site_content}",
+        # "chatbot_global_action": f"You are not an assistant. You are Kevin, the owner of the website of which here is the content : {site_content}",
+        "chatbot_global_action": "You are an helpful yet too friendly assistant",
         "previous_history": [],
         "temperature": 0.0,
         "max_tokens": 150,
@@ -60,4 +61,5 @@ async def bot_request(prompt):
 
     return result['generated_text']
 
-uvicorn.run(app)
+# Run the API with uvicorn on port 8000
+uvicorn.run(app, host="0.0.0.0", port=8000)
