@@ -25,6 +25,7 @@ function addNewQuestion() {
             botLogEl.innerText = "Me: " + data;
     });
 
+    promptEl.value = "";
     promptEl.placeholder = "Anything else ?";
 };
 
