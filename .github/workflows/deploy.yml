@@ -55,7 +55,7 @@ jobs:
       #     python -m unittest backend/api_test.py
 
       - name: Build and push Docker images using Docker Compose
-        run: docker-compose -f repo_b09/docker-compose.yml build
+        run: docker-compose up --build -d
 
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@v2
