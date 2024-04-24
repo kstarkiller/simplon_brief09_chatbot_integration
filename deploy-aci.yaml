@@ -25,8 +25,8 @@ properties:
       image: kevb09registry.azurecr.io/ollama:latest
       resources:
         requests:
-          cpu: 1
-          memoryInGb: 1.5
+          cpu: 2
+          memoryInGb: 8
       ports:
       - port: 11434
   - name: kev-b09-bot
@@ -35,7 +35,7 @@ properties:
       resources:
         requests:
           cpu: 1
-          memoryInGb: 1.5
+          memoryInGb: 8
       ports:
       - port: 8000
 
