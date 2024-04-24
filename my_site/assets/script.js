@@ -13,7 +13,7 @@ function addNewQuestion() {
     botLogEl.innerText = "I'm thinking...";
     answerEl.appendChild(botLogEl);
 
-    fetch('http://localhost:8000/' + promptEl.value, {
+    fetch('http://kev-chatbot.westeurope.azurecontainer.io:8000/' + promptEl.value, {
         method: 'POST',
         })
         .then(response => {
