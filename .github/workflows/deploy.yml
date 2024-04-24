@@ -36,30 +36,11 @@ jobs:
           username: kevb09registry
           password: ${{ secrets.ACR_PASSWORD }}
 
-      # - name: Set up Python
-      #   uses: actions/setup-python@v2
-      #   with:
-      #     python-version: 3.11
-  
-      # - name: Install dependencies 
-      #   run: |
-      #     python -m pip install --upgrade pip
-      #     pip install pandas
-      #     pip install matplotlib
-      #     pip install scikit-learn
-      #     pip install pickle5
-  
-      # - name: Run tests
-      #   run: |
-      #     export PYTHONPATH=$PYTHONPATH:$(pwd)/backend
-      #     python -m unittest backend/api_test.py
-
       - name: Build Docker images using Docker Compose
         run: |
           docker-compose up --build -d
           docker tag ollama/ollama:latest kevb09registry.azurecr.io/ollama
           docker push kevb09registry.azurecr.io/my_site
-          docker push kevb09registry.azurecr.io/my_bot
           docker push kevb09registry.azurecr.io/ollama
         
 
