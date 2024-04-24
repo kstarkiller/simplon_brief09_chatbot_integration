@@ -49,7 +49,7 @@ async def read_item(prompt):
 async def bot_request(request: Request):
     data = await request.json()
     try:
-        url = "http://kev-chatbot.westeurope.azurecontainer.io:11434/api/chat"        
+        url = "http://kev-chatbot.westeurope.azurecontainer.io:11434/api/chat"
         response = requests.post(url, json=data)
         result = response.json()
 
