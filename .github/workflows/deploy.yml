@@ -56,7 +56,6 @@ jobs:
 
       - name: Build and push Docker images using Docker Compose
         run: docker-compose -f docker-compose.yml build
-        working-directory: ../repo_b09
 
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@v2
