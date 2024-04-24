@@ -26,9 +26,10 @@ def pull_model(model_name):
     
     return response.json()   
 
-app = FastAPI()
 
 is_pulled = pull_model("llama3")
+
+app = FastAPI()
 
 # Allow CORS
 origins = ["*"]
