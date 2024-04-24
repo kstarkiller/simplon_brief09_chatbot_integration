@@ -54,8 +54,14 @@ jobs:
       #     export PYTHONPATH=$PYTHONPATH:$(pwd)/backend
       #     python -m unittest backend/api_test.py
 
-      - name: Build and push Docker images using Docker Compose
-        run: docker-compose up --build -d
+      - name: Build Docker images using Docker Compose
+        run: |
+          docker-compose up --build -d
+          docker tag ollama/ollama:latest kevb09registry.azurecr.io/ollama
+          docker push kevb09registry.azurecr.io/my_site
+          docker push kevb09registry.azurecr.io/my_bot
+          docker push kevb09registry.azurecr.io/ollama
+        
 
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@v2

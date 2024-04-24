@@ -2,7 +2,7 @@ version: '3.11'
 
 services:
   ollama:
-    image: kevb09registry.azurecr.io/ollama
+    image: ollama/ollama:latest
     ports:
       - 11434:11434
     container_name: ollama_container
@@ -11,7 +11,7 @@ services:
 
   mybot:
     build:
-      context: /home/kevin/simplon/briefs/b09_chatbot_integration/repo_b09/my_bot/
+      context: /home/runner/work/simplon_brief09_chatbot_integration/simplon_brief09_chatbot_integration/my_bot/
     image: kevb09registry.azurecr.io/my_bot
     container_name: mybot_container
     ports:
@@ -23,7 +23,7 @@ services:
 
   mysite:
     build:
-      context: /home/kevin/simplon/briefs/b09_chatbot_integration/repo_b09/my_site/
+      context: /home/runner/work/simplon_brief09_chatbot_integration/simplon_brief09_chatbot_integrationmy_site/
     image: kevb09registry.azurecr.io/my_site
     container_name: mysite_container
     ports:
