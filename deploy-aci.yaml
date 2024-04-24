@@ -1,11 +1,15 @@
 apiVersion: 2023-05-01
+
 location: westeurope
+
 name: kevContainerGroupB09
+
 properties:
   imageRegistryCredentials:
       - server: kevb09registry.azurecr.io
         username: kevb09registry
         password: password.registry
+
   containers:
   - name: kev-b09-front
     properties:
@@ -25,7 +29,9 @@ properties:
           memoryInGb: 1.5
       ports:
       - port: 11434
+
   osType: Linux
+
   ipAddress:
     type: Public
     dnsNameLabel: kev-chatbot
@@ -34,6 +40,8 @@ properties:
       port: 5000
     - protocol: tcp
       port: 11434
+
 tags:
   kev: b09
+  
 type: Microsoft.ContainerInstance/containerGroups
