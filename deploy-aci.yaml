@@ -35,7 +35,7 @@ properties:
       resources:
         requests:
           cpu: 1
-          memoryInGb: 8
+          memoryInGb: 4
       ports:
       - port: 8000
 
