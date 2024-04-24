@@ -41,6 +41,7 @@ jobs:
           docker-compose up --build -d
           docker tag ollama/ollama:latest kevb09registry.azurecr.io/ollama
           docker push kevb09registry.azurecr.io/my_site
+          docker push kevb09registry.azurecr.io/my_bot
           docker push kevb09registry.azurecr.io/ollama
         
       - name: Find and Replace
