@@ -10,8 +10,8 @@ __pycache__/
 ollama/
 
 # Docker
-Dockerfile
-docker-compose.yml
+# Dockerfile
+# docker-compose.yml
 
 # IPython
 profile_default/
@@ -25,7 +25,3 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
-# Docker
-Dockerfile
-.dockerignore

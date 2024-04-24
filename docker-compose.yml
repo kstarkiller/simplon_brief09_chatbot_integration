@@ -1,0 +1,37 @@
+version: '3.11'
+
+services:
+  ollama:
+    image: kevb09registry.azurecr.io/ollama
+    ports:
+      - 11434:11434
+    container_name: ollama_container
+    networks:
+      - mynetwork
+
+  mybot:
+    build:
+      context: /home/kevin/simplon/briefs/b09_chatbot_integration/repo_b09/my_bot/
+    image: kevb09registry.azurecr.io/my_bot
+    container_name: mybot_container
+    ports:
+      - "8000:8000"
+    depends_on:
+      - ollama
+    networks:
+      - mynetwork
+
+  mysite:
+    build:
+      context: /home/kevin/simplon/briefs/b09_chatbot_integration/repo_b09/my_site/
+    image: kevb09registry.azurecr.io/my_site
+    container_name: mysite_container
+    ports:
+      - "5000:5000"
+    depends_on:
+      - ollama
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
