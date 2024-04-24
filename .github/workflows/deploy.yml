@@ -1,0 +1,73 @@
+name: Azure Deployment
+
+on:
+  push:
+    branches:
+      - ollama-chatbot
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Log in with Azure
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+
+      - name: Azure CLI script
+        uses: azure/CLI@v1
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az account show
+
+      - name: Login to Azure Container Registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: kevb09registry.azurecr.io
+          username: kevb09registry
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      # - name: Set up Python
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: 3.11
+  
+      # - name: Install dependencies 
+      #   run: |
+      #     python -m pip install --upgrade pip
+      #     pip install pandas
+      #     pip install matplotlib
+      #     pip install scikit-learn
+      #     pip install pickle5
+  
+      # - name: Run tests
+      #   run: |
+      #     export PYTHONPATH=$PYTHONPATH:$(pwd)/backend
+      #     python -m unittest backend/api_test.py
+
+      - name: Build and push Docker images using Docker Compose
+        run: docker-compose -f docker-compose.yml build
+        working-directory: ./repo_b09
+
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: "password.registry"
+          replace: ${{ secrets.ACR_PASSWORD }}
+          regex: false
+          include: 'deploy-aci.yaml'
+        
+      - name: Delete Previous Same Container Instances
+        run: az container delete --resource-group kev_b16 --name kevContainerGroupB09 --yes
+    
+      - name: Deploy to Azure Container Instances
+        run: az container create --resource-group kev_b16 --file deploy-aci.yaml

@@ -3,33 +3,31 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import json
 import requests
-# import ollama
-# from bs4 import BeautifulSoup
 
-# def pull_model(model_name):
-#     # Pull the model from Ollama running on Container
-#     url = "http://ollama:11434/api/pull"
-#     data = {"name": model_name, "insecure": True, "stream": False}
-#     response = requests.post(url, data=json.dumps(data))
+def pull_model(model_name):
+    # Pull the model from Ollama running on Container
+    url = "http://ollama:11434/api/pull"
+    data = {"name": model_name, "insecure": True, "stream": False}
+    response = requests.post(url, data=json.dumps(data))
 
-#     try:
-#         if response.status_code == 200:
-#             print("Model is being pulled...")
-#             progress = response.json()
-#             while progress["status"] != "success":
-#                 print(f"Progress: {progress['progress']}%")
-#                 response = requests.get(url)
-#                 progress = response.json()
-#             print("Model is pulled")
-#         else:
-#             print("Failed to pull the model")
-#     except requests.exceptions.HTTPError as err:
-#         raise SystemExit(err)
+    try:
+        if response.status_code == 200:
+            print("Model is being pulled...")
+            progress = response.json()
+            while progress["status"] != "success":
+                print(f"Progress: {progress['progress']}%")
+                response = requests.get(url)
+                progress = response.json()
+            print("Model is pulled")
+        else:
+            print("Failed to pull the model")
+    except requests.exceptions.HTTPError as err:
+        raise SystemExit(err)
     
-#     return response.json()   
+    return response.json()   
     
 
-# is_pulled = pull_model("llama3")
+is_pulled = pull_model("llama3")
 
 app = FastAPI()
 
