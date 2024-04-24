@@ -6,6 +6,9 @@ __pycache__/
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# models
+ollama/
+
 # IPython
 profile_default/
 ipython_config.py
