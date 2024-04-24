@@ -29,9 +29,9 @@ services:
     ports:
       - "5000:5000"
     depends_on:
-      - mybot
+      - ollama
     networks:
       - mynetwork
 
 networks:
-  mynetwork:
+  mynetwork: 
