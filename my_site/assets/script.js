@@ -24,7 +24,7 @@ function addNewQuestion() {
         "stream": false
     };
 
-    fetch('http://kev-chatbot.westeurope.azurecontainer.io:11434/api/chat', {
+    fetch('http://kev-chatbot.westeurope.azurecontainer.io:8000/api/chat', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

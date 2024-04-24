@@ -27,6 +27,8 @@ properties:
         requests:
           cpu: 1
           memoryInGb: 1.5
+      ports:
+      - port: 11434
   - name: kev-b09-nginx
     properties:
       image: kevb09registry.azurecr.io/nginx:latest
@@ -35,7 +37,7 @@ properties:
           cpu: 1
           memoryInGb: 1.5
       ports:
-      - port: 11434
+      - port: 8000
 
   osType: Linux
 
@@ -47,6 +49,8 @@ properties:
       port: 5000
     - protocol: tcp
       port: 11434
+    - protocol: tcp
+      port: 8000
 
 tags:
   kev: b09
