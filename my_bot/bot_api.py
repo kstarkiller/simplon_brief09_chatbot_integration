@@ -6,7 +6,7 @@ import requests
 
 def pull_model(model_name):
     # Pull the model from Ollama running on Container
-    url = "http://ollama:11434/api/pull"
+    url = "http://kev-chatbot.westeurope.azurecontainer.io:11434/api/pull"
     data = {"name": model_name, "insecure": True, "stream": False}
     response = requests.post(url, data=json.dumps(data))
 
@@ -48,7 +48,7 @@ async def read_item(prompt):
 @app.post("/{prompt}")
 async def bot_request(prompt):
     try:
-        url = "http://ollama:11434/api/generate"
+        url = "http://kev-chatbot.westeurope.azurecontainer.io:11434/api/generate"
         data = {"model": "llama3", "prompt": prompt, "stream": False}
         response = requests.post(url, data=json.dumps(data))
         result = response.json()
@@ -59,4 +59,4 @@ async def bot_request(prompt):
         return {"status": "error", "message": str(e)}
 
 # Run the API with uvicorn on port 8000
-uvicorn.run(app, host="0.0.0.0", port=8000)
+# uvicorn.run(app, host="0.0.0.0", port=8000)
