@@ -23,7 +23,7 @@ services:
 
   mysite:
     build:
-      context: /home/runner/work/simplon_brief09_chatbot_integration/simplon_brief09_chatbot_integrationmy_site/
+      context: /home/runner/work/simplon_brief09_chatbot_integration/simplon_brief09_chatbot_integration/my_site/
     image: kevb09registry.azurecr.io/my_site
     container_name: mysite_container
     ports:
