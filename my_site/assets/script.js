@@ -18,30 +18,46 @@ function addNewQuestion() {
     botLogEl.innerText = "I'm thinking...";
     answerEl.appendChild(botLogEl);
 
-    let data = {
-        "model": "llama3",
-        "messages": conversationHistory,
-        "stream": false
-    };
+    // let data = {
+    //     "model": "llama3",
+    //     "messages": conversationHistory,
+    //     "stream": false
+    // };
 
-    fetch('http://kev-chatbot.westeurope.azurecontainer.io:8000/api/chat', {
+    fetch('http://kev-chatbot.westeurope.azurecontainer.io:8000/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+            "model": "llama3",
+            "messages": conversationHistory,
+            "stream": false
+        }),
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
     .then(data => {
-        console.log(data);
-        botLogEl.innerText = "Me: " + data['message']['content'];
-        conversationHistory.push({
-            "role": "assistant",
-            "content": data['message']['content']
-        });
-
-        // Scroll to the bottom of the chat
-        botLogEl.scrollIntoView({ behavior: 'smooth' });
+        if (data.message) {
+            console.log(data);
+            botLogEl.innerText = "Me: " + data.message.content;
+            conversationHistory.push({
+                "role": "assistant",
+                "content": data.message.content
+            });
+    
+            // Scroll to the bottom of the chat
+            botLogEl.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            console.error('Server response does not contain a message property');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
     });
 
     promptEl.value = "";

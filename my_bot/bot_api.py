@@ -1,13 +1,11 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import json
 import requests
 
 def pull_model(model_name):
-    # Pull the model from Ollama running on Container
-    # url = "http://kev-chatbot.westeurope.azurecontainer.io:11434/api/pull"
-    url = "http://localhost:11434/api/pull"
+    url = "http://kev-chatbot.westeurope.azurecontainer.io:11434/api/pull"
 
     data = {"name": model_name, "insecure": True, "stream": False}
     response = requests.post(url, data=json.dumps(data))
@@ -47,21 +45,18 @@ app.add_middleware(
 async def read_item(prompt):
     return {"It works"}
 
-@app.post("/{prompt}")
-async def bot_request(prompt):
+@app.post("/chatbot")
+async def bot_request(request: Request):
+    data = await request.json()
     try:
-        # url = "http://kev-chatbot.westeurope.azurecontainer.io:11434/api/chat"
-        url = "http://localhost:11434/api/chat"
-
-        data = prompt
-        print(data)
-        response = requests.post(url, data=json.dumps(data))
+        url = "http://kev-chatbot.westeurope.azurecontainer.io:11434/api/chat"        
+        response = requests.post(url, json=data)
         result = response.json()
 
-        return result["response"]
+        return result
         
     except Exception as e:
         return {"status": "error", "message": str(e)}
 
 # Run the API with uvicorn on port 8000
-uvicorn.run(app, host="0.0.0.0", port=8000) 
+# uvicorn.run(app, host="0.0.0.0", port=8000) 

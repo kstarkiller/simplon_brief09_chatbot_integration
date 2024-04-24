@@ -29,9 +29,9 @@ properties:
           memoryInGb: 1.5
       ports:
       - port: 11434
-  - name: kev-b09-nginx
+  - name: kev-b09-bot
     properties:
-      image: kevb09registry.azurecr.io/nginx:latest
+      image: kevb09registry.azurecr.io/my_bot:latest
       resources:
         requests:
           cpu: 1
