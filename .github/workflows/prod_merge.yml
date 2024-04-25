@@ -1,16 +1,17 @@
-name: Azure Deployment
+name: Prod Deployment
 
 on:
-  push:
-    branches:
-      - ollama-chatbot
+  pull_request:
+    types:
+      - closed
 
 permissions:
   id-token: write
   contents: read
 
 jobs:
-  build-and-deploy:
+  if_merged:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
       
     steps:
