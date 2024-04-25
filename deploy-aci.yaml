@@ -1,6 +1,6 @@
 apiVersion: 2023-05-01
 
-location: westeurope
+location: westeurope 
 
 name: kevChatbotGroupB09
 
