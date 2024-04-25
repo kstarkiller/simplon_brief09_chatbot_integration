@@ -1,0 +1,58 @@
+apiVersion: 2023-05-01
+
+location: westeurope
+
+name: kevChatbotGroupB09
+
+properties:
+  imageRegistryCredentials:
+      - server: kevb09registry.azurecr.io
+        username: kevb09registry
+        password: password.registry
+
+  containers:
+  - name: kev-b09-front
+    properties:
+      image: kevb09registry.azurecr.io/my_site:latest
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.5
+      ports:
+      - port: 5000
+  - name: kev-b09-ollama
+    properties:
+      image: kevb09registry.azurecr.io/ollama:latest
+      resources:
+        requests:
+          cpu: 2
+          memoryInGb: 8
+      ports:
+      - port: 11434
+  - name: kev-b09-bot
+    properties:
+      image: kevb09registry.azurecr.io/my_bot:latest
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 4
+      ports:
+      - port: 8000
+
+  osType: Linux
+
+  ipAddress:
+    type: Public
+    dnsNameLabel: kev-chatbot
+    ports:
+    - protocol: tcp
+      port: 11434
+    - protocol: tcp
+      port: 8000
+    - protocol: tcp
+      port: 5000
+
+tags:
+  kev: b09
+  
+type: Microsoft.ContainerInstance/containerGroups 

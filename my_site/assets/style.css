@@ -90,7 +90,7 @@ main {
     max-height: 760px;
     border: none;
     border-radius: 10px;
-    background-color: #f3f3f3;
+    background-color: #fff;
     box-shadow: rgba(0,0,0,0.5);
     overflow-x: hidden;
     overflow-y: hidden;
@@ -99,7 +99,7 @@ main {
 
 #chatbox:hover {
     height: 760px;
-    width: 400px;
+    width: 700px;
 }
 
 #chat-label {

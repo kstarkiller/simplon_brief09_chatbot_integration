@@ -3,8 +3,17 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+my_bot/
+
 # Jupyter Notebook
 .ipynb_checkpoints
+
+# models
+ollama/
+
+# Docker
+# Dockerfile
+# docker-compose.yml
 
 # IPython
 profile_default/
@@ -18,7 +27,3 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
-# Docker
-Dockerfile
-.dockerignore
