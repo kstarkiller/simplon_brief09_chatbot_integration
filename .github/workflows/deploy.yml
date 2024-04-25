@@ -57,3 +57,6 @@ jobs:
     
       - name: Deploy to Azure Container Instances
         run: az container create --resource-group kev_b16 --file deploy-aci.yaml
+
+      - name: Pull model on Ollama container
+        run: az container exec --resource-group kev_b16 --name kevChatbotGroupB09 --container-name ollama --exec-command "ollama pull phi3"
