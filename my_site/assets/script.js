@@ -26,7 +26,7 @@ function addNewQuestion() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            "model": "phi3",
+            "model": "llama3",
             "messages": conversationHistory,
             "stream": false
         }),

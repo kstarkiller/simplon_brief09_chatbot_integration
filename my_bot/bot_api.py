@@ -27,7 +27,7 @@ def pull_model(model_name):
     return response.json()   
 
 
-is_pulled = pull_model("phi3")
+is_pulled = pull_model("llama3")
 
 app = FastAPI()
 
