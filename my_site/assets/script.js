@@ -20,7 +20,7 @@ function addNewQuestion() {
     botLogEl.innerText = "I'm thinking...";
     answerEl.appendChild(botLogEl);
 
-    fetch('http://kev-chatbot.westeurope.azurecontainer.io:8000/chatbot', {
+    fetch('http://localhost:8000/chatbot', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

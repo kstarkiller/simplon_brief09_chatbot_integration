@@ -5,7 +5,7 @@ import json
 import requests
 
 def pull_model(model_name):
-    url = "http://kev-chatbot.westeurope.azurecontainer.io:11434/api/pull"
+    url = "http://localhost:11434/api/pull"
 
     data = {"name": model_name, "insecure": True, "stream": False}
     response = requests.post(url, data=json.dumps(data))
@@ -49,7 +49,7 @@ async def read_item(prompt):
 async def bot_request(request: Request):
     data = await request.json()
     try:
-        url = "http://kev-chatbot.westeurope.azurecontainer.io:11434/api/chat"
+        url = "http://localhost:11434/api/chat"
         response = requests.post(url, json=data)
         result = response.json()
 
@@ -59,4 +59,4 @@ async def bot_request(request: Request):
         return {"status": "error", "message": str(e)}
 
 # Run the API with uvicorn on port 8000
-# uvicorn.run(app, host="0.0.0.0", port=8000) 
+uvicorn.run(app, host="0.0.0.0", port=8000) 
